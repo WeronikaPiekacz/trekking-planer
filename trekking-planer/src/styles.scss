@@ -1,0 +1,40 @@
+@import "./app/styles/colors.scss";
+@import "./app/styles/typo.scss";
+@import "./app/styles/inputs.scss";
+@import "./app/styles/variables.scss";
+
+$global-margin-mobile: 16px;
+$global-margin-tablet: 32px;
+$global-margin-desktop: 42px;
+
+// Define media queries for different devices
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+
+html {
+  background-color: $background-color;
+}
+
+body {
+  color: $neutral-dark;
+  margin: 0;
+  padding: 0;
+  width: calc($max-width + $global-margin-desktop * 2);
+  margin: auto;
+  overflow-x: hidden;
+
+  app-root {
+    padding-top: calc($header-height + 20px);
+    display: block;
+    margin: $global-margin-mobile; // Default margin for mobile
+
+    @media (min-width: $tablet) {
+      margin: $global-margin-tablet; // Margin for tablets
+    }
+
+    @media (min-width: $desktop) {
+      margin: $global-margin-desktop; // Margin for desktops
+    }
+  }
+}

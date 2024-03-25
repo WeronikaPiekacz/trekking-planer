@@ -1,0 +1,77 @@
+@import "colors.scss";
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  padding: 10px;
+  border: 1px solid $primary-blue;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: "Droid Sans", Arial, sans-serif;
+  background-color: transparent;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  border-color: $secondary-blue;
+  outline: none;
+}
+
+input[type="submit"],
+button {
+  border-radius: 4px;
+  background-color: $primary-blue;
+  transition: background-color 0.3s;
+  border: none;
+  color: $neutral-light;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: "Droid Sans", Arial, sans-serif;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  background-color: $secondary-blue;
+}
+
+input:disabled,
+button:disabled {
+  background-color: $neutral-light;
+  color: $neutral-dark;
+  cursor: not-allowed;
+}
+
+button.loading,
+input[type="submit"].loading {
+    position: relative;
+    pointer-events: none;
+    color: transparent;
+  
+    &:after {
+      content: "";
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+      margin-left: -10px;
+      border-radius: 50%;
+      border: 2px solid $neutral-light;
+      border-top-color: $primary-blue;
+      animation: spin 1s linear infinite;
+    }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
