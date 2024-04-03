@@ -1,20 +1,21 @@
-import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
-import { SurveyModel, Model } from 'survey-core';
-import { ContrastLightPanelless } from "survey-core/themes";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Model, SurveyModel} from 'survey-core';
+import {ContrastLightPanelless} from "survey-core/themes";
+
 const surveyJson = {
-  title: 'American History',
+  title: 'Chose your trip, we will create equipment for you',
   showProgressBar: 'bottom',
   firstPageIsStarted: true,
-  startSurveyText: 'Start Quiz',
+  startSurveyText: 'Start',
   pages: [
     {
       elements: [
         {
           type: 'radiogroup',
-          name: 'civilwar',
-          title: 'When was the American Civil War?',
-          choices: ['1796-1803', '1810-1814', '1861-1865', '1939-1945'],
-          correctAnswer: '1861-1865',
+          name: 'Place',
+          title: 'Where do you want to go on a trekking trip?',
+          choices: ['Mountains', 'Desert', 'Flat terrain', 'Jungle'],
+          correctAnswer: 'Mountains',
         },
       ],
     },
@@ -22,10 +23,10 @@ const surveyJson = {
       elements: [
         {
           type: 'radiogroup',
-          name: 'civilwar',
-          title: 'When was the American Civil War?',
-          choices: ['1796-1803', '1810-1814', '1861-1865', '1939-1945'],
-          correctAnswer: '1861-1865',
+          name: 'Season',
+          title: 'What time of year do you go on trip?',
+          choices: ['spring', 'summer', 'autumn', 'winter'],
+          correctAnswer: 'spring',
         },
       ],
     },
@@ -33,16 +34,14 @@ const surveyJson = {
       elements: [
         {
           type: 'radiogroup',
-          name: 'libertyordeath',
-          title: 'Whose quote is this: "Give me liberty, or give me death"?',
-          choicesOrder: 'random',
+          name: 'Accommodation',
+          title: 'Where are you planning to spend the night?',
           choices: [
-            'John Hancock',
-            'James Madison',
-            'Patrick Henry',
-            'Samuel Adams',
+            'tent',
+            'shelter',
+            'hotel',
           ],
-          correctAnswer: 'Patrick Henry',
+          correctAnswer: 'tent',
         },
       ],
     },
@@ -50,16 +49,28 @@ const surveyJson = {
       elements: [
         {
           type: 'radiogroup',
-          name: 'magnacarta',
-          title: 'What is Magna Carta?',
-          choicesOrder: 'random',
+          name: 'Food',
+          title: 'What will you feed on?',
           choices: [
-            'The foundation of the British parliamentary system',
-            'The Great Seal of the monarchs of England',
-            'The French Declaration of the Rights of Man',
-            'The charter signed by the Pilgrims on the Mayflower',
+            'Restaurants',
+            'Food rations',
+            'I will hunt',
           ],
-          correctAnswer: 'The foundation of the British parliamentary system',
+          correctAnswer: 'I will hunt',
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          type: 'radiogroup',
+          name: 'Distance',
+          title: 'How long is your trip?',
+          choices: [
+            'short',
+            'long'
+          ],
+          correctAnswer: 'short',
         },
       ],
     },
@@ -68,7 +79,8 @@ const surveyJson = {
 
 @Component({
   selector: 'app-survey',
-  template: `<survey [model]="surveyModel"></survey>`,
+  template: `
+    <survey [model]="surveyModel"></survey>`,
 })
 export class SurveyComponent {
   @Output() submitSurvey = new EventEmitter<any>();
