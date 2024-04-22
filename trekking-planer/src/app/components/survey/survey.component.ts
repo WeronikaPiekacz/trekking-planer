@@ -19,11 +19,15 @@ export type SurveyResponse = {
 }
 
 const surveyJson = {
-  title: 'Chose your trip, we will create equipment for you',
+  title: 'Plan your trip!',
   showProgressBar: 'bottom',
   firstPageIsStarted: true,
   startSurveyText: 'Start',
   pages: [
+    {
+      elements: [
+      ],
+    },
     {
       elements: [
         {
@@ -92,7 +96,7 @@ const surveyJson = {
 @Component({
   selector: 'app-survey',
   template: `
-    <survey [model]="surveyModel"></survey>`,
+    <survey [model]="surveyModel" style="max-width: calc(100vw - 32px); display: block"></survey>`,
 })
 export class SurveyComponent {
   @Output() submitSurvey = new EventEmitter<SurveyResponse>();

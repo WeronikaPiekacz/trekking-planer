@@ -18,7 +18,8 @@ body {
   color: $neutral-dark;
   margin: 0;
   padding: 0;
-  width: calc($max-width + $global-margin-desktop * 2);
+  max-width: calc($max-width + $global-margin-desktop * 2);
+  width: 100%;
   margin: auto;
   overflow-x: hidden;
 
