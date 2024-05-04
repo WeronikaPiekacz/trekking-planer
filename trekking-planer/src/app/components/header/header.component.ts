@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {handleRedirect} from "../../auth/auth-google-provider";
 
 @Component({
   selector: 'app-header',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  protected readonly handleRedirect = handleRedirect;
 }
