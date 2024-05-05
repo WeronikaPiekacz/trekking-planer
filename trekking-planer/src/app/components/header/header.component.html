@@ -5,20 +5,20 @@
     </div>
     <nav class="nav">
       <ul>
-        <ng-container *ngIf="isLogIn$.value">
-          <ng-container *ngIf="user$.value">
-              <li>{{ user$.value?.name }}</li>
+        <ng-container *ngIf="isLogIn()">
+          <ng-container *ngIf="getUser()">
+            <li>{{ getUser()?.name }}</li>
           </ng-container>
         </ng-container>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Contact</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Contact</a></li>
 
-          <ng-container *ngIf="!isLogIn$.value">
-            <li (click)="handleRedirect()"><a href="#">Login</a></li>
-          </ng-container>
-          <ng-container *ngIf="isLogIn$.value">
-            <li (click)="logOut()"><a href="#">Logout</a></li>
-          </ng-container>
+        <ng-container *ngIf="!isLogIn()">
+          <li (click)="logIn()"><a href="#">Login</a></li>
+        </ng-container>
+        <ng-container *ngIf="isLogIn()">
+          <li (click)="logOut()"><a href="#">Logout</a></li>
+        </ng-container>
       </ul>
     </nav>
   </div>
