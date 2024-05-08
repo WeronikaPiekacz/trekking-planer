@@ -9,10 +9,11 @@ import {SurveyComponent} from './components/survey/survey.component';
 import {PlaningComponent} from './components/planing/planing.component';
 import {HomepageComponent} from './components/homepage/homepage.component';
 import {AiModule} from "./data-access/ai/ai.module";
+import {FirebaseModule} from "./data-access/firebase/firebase.module";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, SurveyComponent, HomepageComponent, PlaningComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule, SurveyModule, AiModule],
+  imports: [BrowserModule, AppRoutingModule, SurveyModule, AiModule, FirebaseModule],
   providers: [],
   bootstrap: [AppComponent],
 })

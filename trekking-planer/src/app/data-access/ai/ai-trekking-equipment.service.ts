@@ -36,7 +36,7 @@ class AiTrekkingEquipmentService implements ITrekkingEquipmentService {
     );
     console.log('Equipment generated!');
     let parsedResponse = {};
-    
+
     try {
       parsedResponse = this.extractMessage(response.message.content);
       return parsedResponse as TrekkingEquipment;
@@ -78,8 +78,8 @@ type OllamaRequestBody = {
   stream: boolean;
 };
 
-const TREKKING_SERVICE_TOKEN = new InjectionToken<ITrekkingEquipmentService>(
+const TREKKING_EQUIPMENT_SERVICE_TOKEN = new InjectionToken<ITrekkingEquipmentService>(
   'TrekkingEquipmentService'
 );
 
-export { AiTrekkingEquipmentService, TREKKING_SERVICE_TOKEN };
+export { AiTrekkingEquipmentService, TREKKING_EQUIPMENT_SERVICE_TOKEN };

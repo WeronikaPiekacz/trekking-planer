@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthGoogleProvider} from "../../auth/auth-google-provider";
+import {UserService} from "../../auth/user.service";
 
 
 @Component({
@@ -9,7 +9,7 @@ import {AuthGoogleProvider} from "../../auth/auth-google-provider";
 })
 export class HeaderComponent {
 
-  constructor(private readonly authProvider: AuthGoogleProvider) {
+  constructor(private readonly authProvider: UserService) {
   }
 
   logIn() {

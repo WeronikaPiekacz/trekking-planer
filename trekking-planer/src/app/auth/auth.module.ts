@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AuthGoogleProvider} from "./auth-google-provider";
+import {UserService} from "./user.service";
+import {UserRepository} from "./user-repository"
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import {AuthGoogleProvider} from "./auth-google-provider";
     CommonModule
   ],
   providers: [
-    AuthGoogleProvider
+    UserService,
+    UserRepository
   ]
 })
 export class AuthModule {
