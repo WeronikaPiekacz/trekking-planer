@@ -28,5 +28,9 @@ export class HeaderComponent {
     return this.authProvider.isLogIn();
   }
 
+  get isUserLoaded() {
+    return this.authProvider.isLoaded$.value;
+  }
+
 }
 

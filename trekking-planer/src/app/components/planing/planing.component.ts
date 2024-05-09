@@ -15,7 +15,7 @@ export class PlaningComponent {
   private userRequest?: SurveyResponse;
 
   constructor(
-    private readonly service: TrekkingService,
+    private readonly trekkingService: TrekkingService,
     private readonly userService: UserService
   ) {
   }
@@ -23,7 +23,7 @@ export class PlaningComponent {
   async processResponse($event: SurveyResponse) {
     this.loading = true;
     this.userRequest = $event;
-    this.response = await this.service.generate($event);
+    this.response = await this.trekkingService.generate($event);
     this.loading = false;
     console.log(this.response);
   }
@@ -45,7 +45,7 @@ export class PlaningComponent {
       return
     }
 
-    await this.service.save(user.id as string, this.userRequest, this.response)
+    await this.trekkingService.save(user.id as string, this.userRequest, this.response)
   }
 
   joinArray(array: string[]): string {

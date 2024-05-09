@@ -12,6 +12,7 @@ export class UserService {
   private readonly provider = new GoogleAuthProvider();
   private readonly auth = getAuth(app)
   private isLogIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isLoaded$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private user$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
 
 
@@ -20,17 +21,20 @@ export class UserService {
     this.auth.languageCode = 'pl';
     this.auth.onAuthStateChanged(event => {
       if (event) {
+        this.isLoaded$.next(false)
         let user: User = {name: event.displayName, email: event.email, photoURL: event.photoURL}
         this.createOrGetUser(user)
           .then(user => {
             sessionStoreService.set("user", JSON.stringify(user))
             sessionStoreService.set("isLogIn", "true")
+            this.isLoaded$.next(true)
           })
+      } else {
+         this.isLoaded$.next(true)
       }
     })
     this.sessionStoreService.subscribe(x => {
       if (x.key == "isLogIn") {
-        console.log(x.value)
         this.isLogIn$.next(x.value == "true")
       }
       if (x.key == "user") {
@@ -41,7 +45,6 @@ export class UserService {
         this.user$.next(user)
       }
     })
-
   }
 
   public handleRedirect() {

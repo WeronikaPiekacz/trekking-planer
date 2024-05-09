@@ -1,17 +1,29 @@
 <header class="header">
   <div class="container">
     <div class="logo" routerLink="/">
-      <img src="assets/logo.svg" alt="Trekking Planner">
+      <img src="assets/logo.svg" alt="Trekking Planner" />
     </div>
     <nav class="nav">
+      @if(isUserLoaded) {
       <ul>
-        <ng-container *ngIf="isLogIn()">
-          <ng-container *ngIf="getUser()">
-            <li><img src="{{getUser()?.photoURL}}"
-                 style="width:42px;height:42px;border:0; border-radius: 50%"></li>
-          </ng-container>
+        <ng-container *ngIf="isLogIn() && getUser()">
+          <li>
+            <div
+              style="
+                width: 42px;
+                height: 42px;
+                border: 0;
+                border-radius: 50%;
+                background-size: contain;
+              "
+              [ngStyle]="{
+                'background-image': 'url(' + getUser()?.photoURL + ')'
+              }"
+            ></div>
+          </li>
+          <li><a href="#">History</a></li>
         </ng-container>
-        <li><a href="#">Home</a></li>
+
         <li><a href="#">Contact</a></li>
 
         <ng-container *ngIf="!isLogIn()">
@@ -21,6 +33,7 @@
           <li (click)="logOut()"><a href="#">Logout</a></li>
         </ng-container>
       </ul>
+      }
     </nav>
   </div>
 </header>
