@@ -11,9 +11,9 @@ import {UserRepository} from "./user-repository";
 export class UserService {
   private readonly provider = new GoogleAuthProvider();
   private readonly auth = getAuth(app)
-  private isLogIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isLogIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public isLoaded$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private user$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
+  public user$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
 
 
   constructor(private readonly sessionStoreService: SessionStoreService,

@@ -13,6 +13,7 @@ export class PlaningComponent {
   protected loading = false;
   protected response?: TrekkingEquipment;
   private userRequest?: SurveyResponse;
+  protected isSaveLoading: boolean | undefined;
 
   constructor(
     private readonly trekkingService: TrekkingService,
@@ -29,6 +30,7 @@ export class PlaningComponent {
   }
 
   async saveEquipment() {
+    this.isSaveLoading = true;
     const user = this.userService.getUser();
     if (!user) {
       console.warn("User not logged. Can't save equipment.")
@@ -46,9 +48,14 @@ export class PlaningComponent {
     }
 
     await this.trekkingService.save(user.id as string, this.userRequest, this.response)
+    this.isSaveLoading = false;
   }
 
   joinArray(array: string[]): string {
     return array.join(', ');
+  }
+
+  get canSave(): boolean {
+    return !!this.response && this.userService.isLogIn() && this.isSaveLoading !== false;
   }
 }

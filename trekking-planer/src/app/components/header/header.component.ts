@@ -9,27 +9,27 @@ import {UserService} from "../../auth/user.service";
 })
 export class HeaderComponent {
 
-  constructor(private readonly authProvider: UserService) {
+  constructor(private readonly userService: UserService) {
   }
 
   logIn() {
-    return this.authProvider.handleRedirect();
+    return this.userService.handleRedirect();
   }
 
   logOut() {
-    return this.authProvider.logOut();
+    return this.userService.logOut();
   }
 
   getUser() {
-    return this.authProvider.getUser();
+    return this.userService.getUser();
   }
 
   isLogIn() {
-    return this.authProvider.isLogIn();
+    return this.userService.isLogIn();
   }
 
   get isUserLoaded() {
-    return this.authProvider.isLoaded$.value;
+    return this.userService.isLoaded$.value;
   }
 
 }

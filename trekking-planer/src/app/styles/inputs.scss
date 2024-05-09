@@ -65,8 +65,8 @@ input[type="submit"].loading {
       margin-top: -10px;
       margin-left: -10px;
       border-radius: 50%;
-      border: 2px solid $neutral-light;
-      border-top-color: $primary-yellow;
+      border: 2px solid $primary-yellow;
+      border-top-color: $neutral-dark;
       animation: spin 1s linear infinite;
     }
   }
